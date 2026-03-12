@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->after('id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->decimal('latitude', 10, 8);  
+            $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->string('address');
             $table->string('connector_type');

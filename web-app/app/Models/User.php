@@ -49,18 +49,23 @@ class User extends Authenticatable
     }
 
     /**
- * Get all reservations for the user.
- */
-public function reservations()
-{
-    return $this->hasMany(Reservation::class);
-}
+     * Get all reservations for the user.
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 
-/**
- * Get all charging sessions for the user.
- */
-public function chargingSessions()
-{
-    return $this->hasMany(ChargingSession::class);
-}
+    /**
+     * Get all charging sessions for the user.
+     */
+    public function chargingSessions()
+    {
+        return $this->hasMany(ChargingSession::class);
+    }
+
+    public function managedStations()
+    {
+        return $this->hasMany(Station::class);
+    }
 }

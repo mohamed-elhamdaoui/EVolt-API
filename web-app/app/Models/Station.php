@@ -21,4 +21,9 @@ class Station extends Model
     {
         return $this->hasMany(ChargingSession::class);
     }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
