@@ -47,4 +47,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+ * Get all reservations for the user.
+ */
+public function reservations()
+{
+    return $this->hasMany(Reservation::class);
+}
+
+/**
+ * Get all charging sessions for the user.
+ */
+public function chargingSessions()
+{
+    return $this->hasMany(ChargingSession::class);
+}
 }
