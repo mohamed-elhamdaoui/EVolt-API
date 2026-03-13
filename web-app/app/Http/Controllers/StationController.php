@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreStationRequest;
 
 class StationController extends Controller
 {
@@ -17,9 +18,20 @@ class StationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStationRequest $request)
     {
-        //
+
+        $data = $request->validated();
+
+
+        $station = $request->user()->managedStations()->create($data);
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Station created successfully!',
+            'data' => $station
+        ], 201);
     }
 
     /**
