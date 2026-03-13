@@ -3,9 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Station extends Model
 {
+
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'latitude',
+        'longitude',
+        'address',
+        'connector_type',
+        'power_kw',
+        'status',
+        'user_id',
+    ];
+
+
+
     /**
      * Get all reservations linked to this station.
      */
