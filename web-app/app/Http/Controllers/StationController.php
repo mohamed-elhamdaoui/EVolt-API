@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStationRequest;
+use App\Http\Requests\UpdateStationRequest;
 
 class StationController extends Controller
 {
@@ -45,9 +46,16 @@ class StationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateStationRequest $request, Station $station)
     {
-        //
+        // English Comment: Update only the fields sent in the request
+        $station->update($request->validated());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Station updated successfully! 🛠️',
+            'data'    => $station
+        ]);
     }
 
     /**
